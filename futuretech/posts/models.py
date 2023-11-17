@@ -13,13 +13,13 @@ class Seller(models.Model):
 
 class Post(models.Model):
   class Condition(models.TextChoices):
-    NEW = 'NEW', 'New'
-    USED = 'USED', 'Used'
-    DEFECTIVE = 'REFURBISHED', 'Refurbished'
+    NEW = "New"
+    USED = "Used"
+    REFURBISHED = "Refurbished"
 
   title = models.CharField(max_length=200)
   description = models.CharField(max_length=200)
-  condition = models.CharField(choices=Condition.choices, max_length=15)
+  condition = models.CharField(choices=Condition.choices)
   categoryId = models.ForeignKey(Category, on_delete=models.CASCADE)
   originalPrice = models.DecimalField(max_digits=8, decimal_places=2)
   brandId = models.ForeignKey(Brand, on_delete=models.CASCADE)

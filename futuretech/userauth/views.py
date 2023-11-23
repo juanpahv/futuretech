@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from numpy import generic
 
-# Create your views here.
+class IndexLogIn(generic.FormView):
+  template_name = 'userauth/index.html'
+  

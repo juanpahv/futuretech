@@ -1,6 +1,10 @@
 # vscode workspace settings
 .vscode/
 
+# virtualenv
+pyvenv.cfg
+Scripts
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

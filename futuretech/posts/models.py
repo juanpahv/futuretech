@@ -19,7 +19,7 @@ class Post(models.Model):
 
   title = models.CharField(max_length=200)
   description = models.CharField(max_length=200)
-  condition = models.CharField(choices=Condition.choices)
+  condition = models.CharField(choices=Condition.choices, max_length=100)
   categoryId = models.ForeignKey(Category, on_delete=models.CASCADE)
   originalPrice = models.DecimalField(max_digits=8, decimal_places=2)
   brandId = models.ForeignKey(Brand, on_delete=models.CASCADE)

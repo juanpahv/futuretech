@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from numpy import generic
+from django.views.generic.edit import FormView
+from .forms import LoginForm, RegisterForm
 
-class IndexLogIn(generic.FormView):
-  template_name = 'userauth/index.html'
-  

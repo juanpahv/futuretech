@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Login/Register</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <img src="./images/logo.png" class="logo-image" alt="Logo">
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="register-tab" data-toggle="tab" href="#register">Register</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="login">
+              <form action="./index.html">
+                <div class="form-group">
+                  <label for="usuario">Correo</label>
+                  <input type="email" class="form-control" id="usuario" placeholder="Ingrese su correo">
+                </div>
+                <div class="form-group">
+                  <label for="contrasena">Contraseña</label>
+                  <input type="password" class="form-control" id="contrasena" placeholder="Ingrese su contraseña">
+                </div>
+                <div class="form-group text-center"> 
+                  <a>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                  </a>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="register">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label >Usuario</label>
+                  <input type="text" class="form-control" placeholder="Ingrese un usuario">
+                </div>
+                <div class="form-group">
+                  <label >Correo</label>
+                  <input type="email" class="form-control" placeholder="Ingrese su correo">
+                </div>
+                <div class="form-group">
+                  <label >Contraseña</label>
+                  <input type="password" class="form-control" placeholder="Ingrese una Contraseña">
+                </div>
+                <div class="form-group">
+                  <label >Confirmar Contraseña</label>
+                  <input type="password" class="form-control" placeholder="Confirme su contraseña">
+                </div>
+                <div class="form-group text-center"> 
+                  <button type="submit" class="btn btn-primary">Registrarse</button>
+                </div>     
+                <div class="text-center">
+                  <a href="./loginSeller.html" class="text-center mt-2"><strong>Registrarse como vendedor</strong></a>
+                </div>          
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

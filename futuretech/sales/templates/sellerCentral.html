@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<title>Seller Central</title>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{% static 'img/favicon.jpg' %}" class="imgVendedor" alt="Perfil del Vendedor">
+                    <h5 class="card-title">JUAN PABLITO</h5>
+                    <p class="card-text">@pablitohv</p>
+                    <h5 class="card-title">Listing</h5>
+                    <p class="card-text">Number of Listings</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Business Metrics</h5>
+                    <p class="card-text"><strong>Total Sales: 1000</strong></p>
+                    <p class="card-text"><strong>Sales Quantity: 500</strong></p>
+                </div>
+            </div>
+        </div>
+        <!-- Create Listing and Listing Display -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title">Listings</h5>
+                        <button type="button" class="btn btn-primary mb-3">Create Listing</button>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <img src="product1.jpg" alt="Product 1">
+                        <h6>Product Name</h6>
+                        <p>Stock: 100 units</p>
+                        <p>Units Sold: 50</p>
+                        <p>Price: $19.99</p>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-warning">Modify</button>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <img src="product1.jpg" alt="Product 2">
+                        <h6>Product Name</h6>
+                        <p>Stock: 100 units</p>
+                        <p>Units Sold: 50</p>
+                        <p>Price: $19.99</p>
+                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-warning">Modify</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

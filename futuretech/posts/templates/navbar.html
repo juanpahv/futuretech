@@ -1,0 +1,39 @@
+{% extends 'base.html'%} {% block content %}
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="FutureTech">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNav">
+    <form class="col-md-10">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Buscar">
+    </form>
+    <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}">
+            <img class="perfil-img" src="{% static 'img/favicon.png' %}"></img>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- username -->
+          <a class="nav-link" href="{% url 'profile' %}">Mauricio</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'shoppingCart' %}">
+          <i class="fa fa-shopping-cart"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}

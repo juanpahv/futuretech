@@ -1,0 +1,81 @@
+{% extends 'base.html'%} {% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<title>Orders</title>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4 profile-container">
+            <!-- Texto y mensaje sobre información personal -->
+            <h3><strong>Orders</strong></h3>
+            <p>Manage your orders</p>
+            <!-- Imagen del usuario -->
+            <img src="{% static 'img/favicon.png' %}" class="img-fluid rounded-circle" alt="User Image">
+            
+            <!-- Opciones de perfil -->
+            <div class="list-group mt-3">
+                <a href="{% url 'profile' %}"  class="list-group-item list-group-item-action">Profile Information</a>
+                <a href="{% url 'userOrders' %}" class="list-group-item list-group-item-action active">Orders</a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">Log Out</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="order-container">
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+                <div class="order-frame">
+                    <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
+                    <p class="nameProduct"><strong>AirPods (2da generación)</strong></p>
+                    <p class="unitProduct">1 unidad</p>
+                    <p class="priceProduct"><strong>$20.00</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

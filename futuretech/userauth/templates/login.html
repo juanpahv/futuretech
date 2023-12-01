@@ -1,0 +1,84 @@
+{% extends 'base.html'%} {% block content %}
+{% load static %}
+<title>Login/Register</title>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <img src="{% static 'img/logo.png' %}" class="logo-image" alt="Logo">
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="register-tab" data-toggle="tab" href="#register">Register</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="login">
+              <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="user">User</label>
+                  <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                  <strong style="color: red;">{{errorLogin}}</strong>
+                </div>
+                <div class="form-group text-center"> 
+                  <a>
+                    <button type="submit" value="login" class="btn btn-primary">Iniciar sesión</button>
+                  </a>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="register">
+              <form method="post" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="first_name">First name</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First name">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="last_name">Last name</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last name">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" id="username" class="form-control" placeholder="Ingrese un usuario">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Ingrese su correo">
+                </div>
+                <div class="form-group">
+                  <label for="password1">Password</label>
+                  <input type="password" name="password1" id="password1" class="form-control" placeholder="Ingrese una Contraseña">
+                </div>
+                <div class="form-group">
+                  <label for="password2">Password Confirmation</label>
+                  <input type="password" name="password2" id="password2" class="form-control" placeholder="Confirme su contraseña">
+                  <strong style="color: red;">{{errorSignup}}</strong>
+                </div>
+                <div class="form-group text-center"> 
+                  <button type="submit" class="btn btn-primary">Registrarse</button>
+                </div>     
+                <div class="text-center">
+                  <a href="{% url 'signUpAsSeller' %}" class="text-center mt-2"><strong>Registrarse como vendedor</strong></a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

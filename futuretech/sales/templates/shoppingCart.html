@@ -1,0 +1,51 @@
+{% extends 'base.html'%} {% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<title>Cart</title>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-7 mx-auto">
+            <h2 class="font-weight-bold mb-3">Shopping Cart</h2>
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/airpods.jpg' %}" class="imgProducto" alt="Producto">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">AirPods (segunda generación)</h5>
+                            <p class="card-text text-muted">Used</p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary" type="button">-</button>
+                                </div>
+                                <input type="text" class="form-control text-center" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">+</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger btn-sm mr-2">Delete</button>
+                            <p class="font-weight-bold mt-2">$168.84</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="font-weight-bold mb-3">Purchase Summary</h2>
+        
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Total</h5>
+                        <p class="font-weight-bold">$168.84</p>
+                    </div>
+                    <a href="{% url 'checkout' %}">
+                        <button class="btn btn-primary btn-sm">Buy All</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -19,7 +19,7 @@ class Seller(models.Model):
 
   def __str__(self):
     return self.publicName
-
+  
 class Post(models.Model):
   class Condition(models.TextChoices):
     NEW = "New"
@@ -38,6 +38,15 @@ class Post(models.Model):
 
   def __str__(self):
     return self.title
+  
+  def getDiscountedPrice(self):
+    return self.originalPrice * (1 - self.discountPercentage / 100)
+  
+  def getCategoryName(self):
+    return self.categoryId.name
+  
+  def getBrandName(self):
+    return self.brandId.name
 
 class PostImage(models.Model):
   postId = models.ForeignKey(Post, on_delete=models.CASCADE)

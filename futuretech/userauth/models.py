@@ -5,3 +5,6 @@ class UserProfile(models.Model):
     userId = models.OneToOneField(User, on_delete=models.CASCADE)
     creationDate = models.DateField(auto_now_add=True)
     profilePicture = models.BinaryField(null=True)
+    
+    def __str__(self):
+        return self.userId.username

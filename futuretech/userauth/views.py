@@ -1,9 +1,10 @@
-from math import log
 from django.shortcuts import redirect, render
-from django.contrib.auth.models import User
-from django.contrib.auth.models import Group
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .forms import UserForm
+from .models import UserProfile
+from posts.models import Seller
 from django.db import IntegrityError
 
 def signUp(request):
@@ -16,8 +17,10 @@ def signUp(request):
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
-        group = Group.objects.get(name='Users')
-        group.user_set.add(user)
+        userProfile = UserProfile(userId=user)
+        # group = Group.objects.get(name='Users')
+        # group.user_set.add(user)
+        userProfile.save()
         user.save()
         login(request, user)
         return redirect('home')
@@ -34,8 +37,10 @@ def signUpAsSeller(request):
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
-        group = Group.objects.get(name='Sellers')
-        group.user_set.add(user)
+        # group = Group.objects.get(name='Sellers')
+        # group.user_set.add(user)
+        seller = Seller(userId=user, publicName=request.POST['public_name'])
+        seller.save()
         user.save()
         login(request, user)
         return redirect('home')
@@ -59,7 +64,9 @@ def signOut(request):
 
 @login_required
 def userProfile(request):
-  return render(request, 'userProfile.html')
+  user = User.objects.get(id=request.user.id)
+  form = UserForm(instance=user)
+  return render(request, 'userProfile.html', {'form': form})
 
 @login_required
 def sellerProfile(request):

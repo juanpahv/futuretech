@@ -31,26 +31,20 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h2 class="mb-3">Airpods 2</h2>
-            <p class="text-muted">Category: Electronics</p>
-            <p class="text-muted">Brand: Apple</p>
-            <p>Condition: <span class="text-success">New</span></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget felis ut elit tincidunt fermentum.
-                Sed ac turpis sit amet libero lacinia sodales.</p>
-            <h3 class="text-success font-weight-bold">$99.99</h3>
+            <h2 class="mb-3">{{ post.title }}</h2>
+            <p class="text-muted">Category: {{ post.getCategoryName }}</p>
+            <p class="text-muted">Brand: {{ post.getBrandName }}</p>
+            <p>Condition: <span class="text-success">{{ post.condition }}</span></p>
+            <p>{{ post.description }}</p>
+            <h3 class="text-success font-weight-bold">${{ post.originalPrice }}</h3>
             <div class="form-group">
                 <label for="quantity">Quantity:</label>
                 <input type="number" class="form-control form-control-sm text-right" id="quantity" style="width: 70px"
                     value="1" min="1">
             </div>
-            <a href="./shoppingCart.html"><button class="btn btn-primary btn-lg">Add to Cart</button></a>
+            <a href="{% url 'shoppingCart' %}"><button class="btn btn-primary btn-lg">Add to Cart</button></a>
             <div class="mt-4">
-                <h4>Product Features</h4>
-                <ul>
-                    <li>Feature 1: Lorem ipsum dolor sit amet</li>
-                    <li>Feature 2: Consectetur adipiscing elit</li>
-                    <li>Feature 3: Sed do eiusmod tempor incididunt</li>
-                </ul>
+                <h4>Stock: {{ post.stock }}</h4>
             </div>
         </div>
         <div class="row mt-8">
@@ -64,7 +58,7 @@
                   <div class="row">
                     <div class="col-md-3">
                       <div class="card" style="width: 100%;">
-                        <a href="{% url 'productPage' %}">
+                        <a href="{% url 'productPage' post.id %}">
                           <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
                         </a>
                         <div class="card-body">
@@ -76,7 +70,7 @@
                     </div>
                     <div class="col-md-3">
                       <div class="card" style="width: 100%;">
-                        <a href="{% url 'productPage' %}">
+                        <a href="">
                           <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
                         </a>
                         <div class="card-body">
@@ -88,7 +82,7 @@
                     </div>
                     <div class="col-md-3">
                       <div class="card" style="width: 100%;">
-                        <a href="{% url 'productPage' %}">
+                        <a href="">
                           <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
                         </a>
                         <div class="card-body">
@@ -100,7 +94,7 @@
                     </div>
                     <div class="col-md-3">
                       <div class="card" style="width: 100%;">
-                        <a href="{% url 'productPage' %}">
+                        <a href="">
                           <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
                         </a>
                         <div class="card-body">

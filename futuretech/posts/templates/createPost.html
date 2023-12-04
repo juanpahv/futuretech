@@ -7,7 +7,7 @@
       <div class="col-md-8">
           <div class="card">
               <div class="card-body">
-                  <h5 class="card-text">{{ post.title }}</h5>
+                  <h5 class="card-text">Name of the Post</h5>
                   <h4 class="card-title"><strong>Airpods (2da Generacion)</strong></h4>
               </div>
           </div>
@@ -28,8 +28,16 @@
       <div class="col-md-8">
           <div class="card">
               <div class="card-body">
-                  <h5 class="card-text">Description</h5>
-                  <p class="card-text">{{ post.description }}</h4>
+                  <h5 class="card-text">Description of the Post</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus
+                      ipsum vel sapien tincidunt, in gravida sem feugiat. Ut auctor magna vitae lorem facilisis,
+                      sed varius quam aliquet. Suspendisse potenti. Donec interdum sit amet turpis quis porta.
+                      Proin quis leo consectetur, auctor mauris vel, interdum enim. Donec aliquet ante eu nibh
+                      vulputate tincidunt. Nunc sodales nibh sed mi fermentum posuere. Mauris eros nisi, aliquam
+                      et consectetur eu, hendrerit sed orci. Fusce laoreet orci erat, vel fermentum ante consequat
+                      vel.
+                      Pellentesque lacinia ipsum tortor, condimentum posuere tellus rhoncus quis. Aliquam non
+                      consectetur dui. Pellentesque sit amet nibh ut mi convallis consectetur. </h4>
               </div>
           </div>
       </div>
@@ -92,5 +100,14 @@
       </div>
   </div>
   <button type="button" class="btn btn-primary col-md-2">Modify</button>
+</div>
+
+<div>
+    <form action="{% url 'createPost' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {{error}}
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 </div>
 {% endblock %}

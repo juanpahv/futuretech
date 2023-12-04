@@ -7,25 +7,121 @@
     <div class="row justify-content-center text-center">
       <div class="col-md-8 col-lg-6">
         <div class="header">
-          <h2>Popular Products</h2>
+          <h2><strong>Popular Products</strong></h2>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <!-- Single Product -->
-      <div class="col-md-6 col-lg-4 col-xl-3">
-        <div id="product-1" class="single-product">
-          <a href="{% url 'productPage' %}">
-            <div class="part-1"></div>
-            <div class="part-2">
-              <h3 class="product-title">AirPods (tercera generación)</h3>
-              <h4 class="product-old-price">$3,699.00</h4>
-              <h4 class="product-price">$1502.00</h4>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card" style="width: 100%;">
+              <a href="{% url 'productPage' %}">
+                <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+              </a>
+              <div class="card-body">
+                <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                <p class="card-text">Precio: $1299.99</p>
+                <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+              </div>
             </div>
-          </a>
+          </div>
+          <div class="col-md-3">
+            <div class="card" style="width: 100%;">
+              <a href="{% url 'productPage' %}">
+                <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+              </a>
+              <div class="card-body">
+                <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                <p class="card-text">Precio: $1299.99</p>
+                <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" style="width: 100%;">
+              <a href="{% url 'productPage' %}">
+                <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+              </a>
+              <div class="card-body">
+                <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                <p class="card-text">Precio: $1299.99</p>
+                <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card" style="width: 100%;">
+              <a href="{% url 'productPage' %}">
+                <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+              </a>
+              <div class="card-body">
+                <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                <p class="card-text">Precio: $1299.99</p>
+                <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center text-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="header">
+              <h2><strong>Hot Products🔥</strong></h2>
+            </div>
+          </div>
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="card" style="width: 100%;">
+                  <a href="{% url 'productPage' %}">
+                    <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+                  </a>
+                  <div class="card-body">
+                    <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                    <p class="card-text">Precio: $1299.99</p>
+                    <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card" style="width: 100%;">
+                  <a href="{% url 'productPage' %}">
+                    <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+                  </a>
+                  <div class="card-body">
+                    <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                    <p class="card-text">Precio: $1299.99</p>
+                    <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card" style="width: 100%;">
+                  <a href="{% url 'productPage' %}">
+                    <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+                  </a>
+                  <div class="card-body">
+                    <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                    <p class="card-text">Precio: $1299.99</p>
+                    <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card" style="width: 100%;">
+                  <a href="{% url 'productPage' %}">
+                    <img src="{% static 'img/airpods.jpg' %}" class="card-img-top zoom-img" alt="Nombre del Producto 1">
+                  </a>
+                  <div class="card-body">
+                    <h6 class="card-title"><strong>Airpods 2</strong></h6>
+                    <p class="card-text">Precio: $1299.99</p>
+                    <a href="{% url 'shoppingCart' %}" class="btn btn-primary">Agregar al carrito</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
+{% include 'footer.html' %}
 {% endblock %}

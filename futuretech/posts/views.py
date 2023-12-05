@@ -1,9 +1,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import PostForm, PostImageForm
+from .forms import PostForm, PostImageForm, QuantityForm
 from .models import Post, Seller, Category
-from sales.forms import CartItemForm
 
 def navBar(request):
   user = request.user
@@ -36,10 +35,8 @@ def listPosts(request):
 
 def productPage(request, post_id):
   post = get_object_or_404(Post, pk=post_id)
-  form = CartItemForm()
-  if request.method == 'POST':
-    addToCart(request, post_id)
-  return render(request, 'productPage.html', {'post': post, 'form': form})
+  addToCart(request, post_id)
+  return render(request, 'productPage.html', {'post': post})
 
 @login_required
 def modifyPost(request, post_id):
@@ -79,12 +76,16 @@ def createPost(request):
         
 @login_required
 def addToCart(request, post_id):
-  post = get_object_or_404(Post, pk=post_id)
-  form = CartItemForm(request.POST)
-  if form.is_valid():
-    cart_item = form.save(commit=False)
-    cart_item.user = request.user
-    cart_item.quantity = form.cleaned_data['quantity']
-    print(cart_item)
-    cart_item.save()
-    return redirect('shoppingCart')
+  post = get_object_or_404(Post, id=post_id)
+
+  cart = request.session.get('cart', [])
+
+  cart.append(
+     {'post_id': post.id,
+      'quantity': 1}
+  )
+
+  request.session['cart'] = cart
+  
+  print(request.session['cart'])
+  return redirect('shoppingCart')

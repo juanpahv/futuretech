@@ -28,4 +28,7 @@ class PostImageForm(forms.ModelForm):
   class Meta:
     model = PostImage
     fields = ['image', 'postId']
+
+class QuantityForm(forms.Form):
+  quantity = forms.IntegerField(label='Quantity', min_value=1, max_value=1000, widget=forms.NumberInput(attrs={'class': 'form-control'}))
     

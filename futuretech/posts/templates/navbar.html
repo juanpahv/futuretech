@@ -12,15 +12,25 @@
     </form>
     <ul class="navbar-nav ml-auto">
       {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'profile' %}">
-            <img class="perfil-img" src="{% static 'img/favicon.png' %}"></img>
-          </a>
-        </li>
-        <li class="nav-item">
-          <!-- username -->
-          <a class="nav-link" href="{% url 'profile' %}">Mauricio</a>
-        </li>
+        {% if user.seller %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sellerProfile' %}">
+              <img class="perfil-img" src="{% static 'img/favicon.png' %}"></img>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sellerProfile' %}">{{ user.username }}</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">
+              <img class="perfil-img" src="{% static 'img/favicon.png' %}"></img>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
+          </li>
+        {% endif %}
       {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Login</a>

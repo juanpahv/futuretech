@@ -13,8 +13,9 @@
             
             <!-- Opciones de perfil -->
             <div class="list-group mt-3">
-                <a href="{% url 'profile' %}"  class="list-group-item list-group-item-action">Profile Information</a>
-                <a href="{% url 'userOrders' %}" class="list-group-item list-group-item-action active">Orders</a>
+                <a href="{% url 'sellerProfile' %}"  class="list-group-item list-group-item-action">Seller Information</a>
+                <a href="{% url 'sellerOrders' %}" class="list-group-item list-group-item-action active">Orders</a>
+                <a href="{% url 'sellerCentral' %}" class="list-group-item list-group-item-action">Seller Central</a>
                 <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">Log Out</a>
             </div>
         </div>
@@ -22,10 +23,10 @@
             <div class="order-container">
             {% if posts %}
             {% for post in posts %}
-            <div class="order-frame">
+            <div class="order-frame  ">
                 <img src="{% static 'img/airpods.jpg' %}" class="order-product" alt="Product Image">
                 <p class="nameProduct"><strong>{{post.title}}</strong></p>
-                <p class="priceProduct"><strong>{{post.originalPrice}}</strong></p>
+                <p class="priceProduct"><strong>${{post.originalPrice}}</strong></p>
             </div>
             {% endfor %}
             </div>

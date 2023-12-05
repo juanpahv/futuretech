@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, PostImage
 
 class PostForm(forms.ModelForm):
   class Meta:
@@ -25,3 +25,9 @@ class PostForm(forms.ModelForm):
       'stock': forms.NumberInput(attrs={'class': 'form-control'}),
       'discountPercentage': forms.NumberInput(attrs={'class': 'form-control'}),
     }
+
+class PostImageForm(forms.ModelForm):
+  class Meta:
+    model = PostImage
+    fields = ['image', 'postId']
+    

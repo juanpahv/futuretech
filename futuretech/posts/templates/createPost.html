@@ -1,113 +1,105 @@
-{% extends "base.html" %} {% block content %}
-{% load static %}
+{% extends "base.html" %} {% block content %} 
+{% load static %} 
 {% include 'navbar.html' %}
-<div class="container mt-4">
-  <h2>Modify Post</h2>
-  <div class="row">
-      <div class="col-md-8">
-          <div class="card">
-              <div class="card-body">
-                  <h5 class="card-text">Name of the Post</h5>
-                  <h4 class="card-title"><strong>Airpods (2da Generacion)</strong></h4>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card">
-              <div class="form-group">
-                  <select class="form-control" id="cars" name="cars">
-                      <option value="volvo">Used</option>
-                      <option value="saab">Reacondition</option>
-                      <option value="mercedes">New</option>
-                  </select>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col-md-8">
-          <div class="card">
-              <div class="card-body">
-                  <h5 class="card-text">Description of the Post</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus
-                      ipsum vel sapien tincidunt, in gravida sem feugiat. Ut auctor magna vitae lorem facilisis,
-                      sed varius quam aliquet. Suspendisse potenti. Donec interdum sit amet turpis quis porta.
-                      Proin quis leo consectetur, auctor mauris vel, interdum enim. Donec aliquet ante eu nibh
-                      vulputate tincidunt. Nunc sodales nibh sed mi fermentum posuere. Mauris eros nisi, aliquam
-                      et consectetur eu, hendrerit sed orci. Fusce laoreet orci erat, vel fermentum ante consequat
-                      vel.
-                      Pellentesque lacinia ipsum tortor, condimentum posuere tellus rhoncus quis. Aliquam non
-                      consectetur dui. Pellentesque sit amet nibh ut mi convallis consectetur. </h4>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card">
-              <div class="form-group">
-                  <select class="form-control" id="cars" name="cars">
-                      <option value="volvo">Headphones</option>
-                      <option value="saab">Laptops</option>
-                      <option value="mercedes">Videogames</option>
-                  </select>
-              </div>
-          </div>
-          <div class="card">
-              <div class="form-group">
-                  <div class="form-group">
-                      <input type="text" class="form-control" id="exampleInput" placeholder="Brand">
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col-md-8">
-          <div class="card">
-              <div class="card-body">
-                  <h5 class="card-text">Images</h5>
-                  <div class="d-flex flex-wrap">
-                      <img src="https://via.placeholder.com/150" class="img-thumbnail m-2" alt="Image 1">
-                      <img src="https://via.placeholder.com/150" class="img-thumbnail m-2" alt="Image 2">
-                      <img src="https://via.placeholder.com/150" class="img-thumbnail m-2" alt="Image 3">
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-          <div class="card">
-              <div class="form-group">
-                  <select class="form-control" id="cars" name="cars">
-                      <option value="volvo">Headphones</option>
-                      <option value="saab">Laptops</option>
-                      <option value="mercedes">Videogames</option>
-                  </select>
-              </div>
-          </div>
-          <div class="card">
-              <div class="form-group">
-                  <div class="form-group">
-                      <input type="text" class="form-control" id="exampleInput" placeholder="Stock">
-                  </div>
-              </div>
-          </div>
-          <div class="card">
-              <div class="form-group">
-                  <div class="form-group">
-                      <input type="text" class="form-control" id="exampleInput" placeholder="Precio">
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <button type="button" class="btn btn-primary col-md-2">Modify</button>
-</div>
 
-<div>
-    <form action="{% url 'createPost' %}" method="post">
+<title>Create post</title>
+<div class="container mt-4">
+  <h2>Create post</h2>
+  <div>
+    <form action="{% url 'createPost' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-text">Name of the Post</h5>
+              <h4 class="card-title">{{form.title}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <label for="">Condition</label>
+              {{form.condition}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card h-75">
+            <div class="card-body">
+              <h5 class="card-title">Description of the Post</h5>
+              <p class="card-text">{{form.description}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="category">Category</label>
+                {{ form.categoryId }}
+              </div>
+              <div class="form-group">
+                <label for="brand">Brand</label>
+                {{ form.brandId }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-text">Images</h5>
+              {{image.image}}
+              <div class="d-flex flex-wrap">
+                <img
+                  src="https://via.placeholder.com/150"
+                  class="img-thumbnail m-2"
+                  alt="Image 1"
+                />
+                <img
+                  src="https://via.placeholder.com/150"
+                  class="img-thumbnail m-2"
+                  alt="Image 2"
+                />
+                <img
+                  src="https://via.placeholder.com/150"
+                  class="img-thumbnail m-2"
+                  alt="Image 3"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="">Stock</label>
+                {{ form.stock}}
+              </div>
+            <div class="form-group">
+              <label for="">Original price</label>
+              {{ form.originalPrice}}
+            </div>
+            <div class="form-group">
+              <label for="">Discount percentage</label>
+              {{ form.discountPercentage }}
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       {{error}}
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Create</button>
     </form>
+
+    {% endblock %}
+  </div>
 </div>
-{% endblock %}

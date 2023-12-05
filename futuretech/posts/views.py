@@ -1,7 +1,18 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import PostForm
+from django.contrib.auth.models import User
+from .forms import PostForm, PostImageForm
 from .models import Post, Seller
+
+def postsInCart(post):
+  posts = []
+  
+  return posts
+
+def navBar(request):
+  user = request.user
+  is_seller = Seller.objects.filter(userId=user).exists()
+  return render(request, 'navbar.html', {'user': user}, {'seller': is_seller})
 
 def listPosts(request):
   posts = Post.objects.all()
@@ -35,14 +46,18 @@ def modifyPost(request, post_id):
 @login_required
 def createPost(request):
   if request.method == 'GET':
-    return render(request, 'createPost.html', {'form': PostForm})
+    image = PostImageForm()
+    return render(request, 'createPost.html', {'form': PostForm, 'image': image})
   else:
-    try:
       form = PostForm(request.POST)
+      image = PostImageForm(request.POST, request.FILES)
+
       newPost = form.save(commit=False)
       seller = Seller.objects.get(userId=request.user)
       newPost.sellerId = seller
       newPost.save()
+
+      image_instance = image.save(commit=False)
+      image_instance.postId = newPost
+      image_instance.save()
       return redirect('sellerCentral')
-    except ValueError:
-      return render(request, 'createPost.html', {'form': PostForm, 'error': 'Bad data passed in. Try again.'})

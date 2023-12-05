@@ -10,42 +10,42 @@
       <p>Add or modify your personal information</p>
       
       <!-- Imagen del usuario -->
-      <img src="{% static 'img/favicon.jpg' %}" class="img-fluid rounded-circle" alt="User Image">
+      <img src="{% static 'img/favicon.png' %}" class="img-fluid rounded-circle" alt="User Image">
       
       <!-- Opciones de perfil -->
       <div class="list-group mt-3">
-        <a href="#"  class="list-group-item list-group-item-action active">Profile Information</a>
-        <a href="#" class="list-group-item list-group-item-action">Orders</a>
-        <a href="#" class="list-group-item list-group-item-action">Seller Central</a>
-        <a href="#" class="list-group-item list-group-item-action">Log Out</a>
+        <a href="#"  class="list-group-item list-group-item-action active">Seller Information</a>
+        <a href="{% url 'sellerOrders' %}" class="list-group-item list-group-item-action">Orders</a>
+        <a href="{% url 'sellerCentral' %}" class="list-group-item list-group-item-action">Seller Central</a>
+        <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">Log Out</a>
       </div>
     </div>
     <div class="col-md-8">
-      <!-- Formulario de información de perfil -->
-      <form class="formulario">
+      <form class="formulario" method="post">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            <label for="name">First name</label><br>
+            <strong>{{user.first_name}}</strong>
           </div>
           <div class="form-group col-md-6">
-            <label for="lastname">Lastname</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Enter your lastname">
+            <label for="lastname">Last name</label><br>
+            <strong>{{user.last_name}}</strong>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="username">Username</label><br>
+            <strong>{{user.username}}</strong>
+          </div>
+          <div class="form-group">
+            <label for="username">Public Name</label><br>
+            <strong>{{seller_info.publicName}}</strong>
           </div>
         </div>
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" placeholder="Enter your username">
+          <label for="email">Email</label><br>
+          <strong>{{user.email}}</strong>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter your password">
-        </div>
-        <button type="button" class="btn btn-primary">Save Information</button>
       </form>
     </div>
   </div>

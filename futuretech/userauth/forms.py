@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 class UserForm(forms.ModelForm):
   class Meta:
     model = User
-    fields = ['username', 'password', 'email', 'first_name', 'last_name']
+    fields = ['first_name', 'last_name','username', 'email', 'password']
     widgets = {
+      'first_name': forms.TextInput(attrs={'class': 'form-control'}), 
+      'last_name': forms.TextInput(attrs={'class': 'form-control'}),
       'username': forms.TextInput(attrs={'class': 'form-control'}),
-      'password': forms.PasswordInput(),
+      'email': forms.TextInput(attrs={'class': 'form-control'}),
+      'password': forms.PasswordInput(attrs={'class': 'form-control'}),
     }
-    
+  

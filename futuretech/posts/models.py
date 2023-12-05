@@ -50,7 +50,7 @@ class Post(models.Model):
 
 class PostImage(models.Model):
   postId = models.ForeignKey(Post, on_delete=models.CASCADE)
-  image = models.BinaryField()
+  image = models.ImageField(upload_to='images/', default='images/logo.png')
 
   def __str__(self):
-    return self.postId
+    return self.postId.title

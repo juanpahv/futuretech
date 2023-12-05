@@ -2,61 +2,73 @@
 {% load static %}
 {% include 'navbar.html' %}
 <title>Seller Central</title>
+
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12 mt-4">
             <div class="card">
                 <div class="card-body">
-                    <img src="{% static 'img/favicon.jpg' %}" class="imgVendedor" alt="Perfil del Vendedor">
-                    <h5 class="card-title">JUAN PABLITO</h5>
-                    <p class="card-text">@pablitohv</p>
-                    <h5 class="card-title">Listing</h5>
-                    <p class="card-text">Number of Listings</p>
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="{% static 'img/favicon.png' %}" class="imgVendedor" alt="Perfil del Vendedor"
+                                style="max-width: 100px; height: auto;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6 d-flex flex-column justify-content-center">
+                                    <h5 class="card-title">{{seller.publicName}}</h5>
+                                    <p class="card-text">@{{user.username}}</p>
+                                </div>
+                                <div class="col-md-6 d-flex flex-column justify-content-center">
+                                    <h5 class="card-title">Posts</h5>
+                                    <p class="card-text">{{posts_count}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-12 mt-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Business Metrics</h5>
-                    <p class="card-text"><strong>Total Sales: 1000</strong></p>
-                    <p class="card-text"><strong>Sales Quantity: 500</strong></p>
-                </div>
-            </div>
-        </div>
-        <!-- Create Listing and Listing Display -->
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <h5 class="card-title">Listings</h5>
-                        <button type="button" class="btn btn-primary mb-3">Create Listing</button>
+                    <div class="row align-items-center justify-content-between mb-3">
+                        <div class="col-md-6">
+                            <h5 class="card-title">Listings</h5>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                            <a href="{% url 'createPost'%}" type="button" class="btn btn-primary btn-sm">Create post</a>
+                        </div>
                     </div>
                     <hr class="my-4">
-                    <div class="row">
-                        <img src="product1.jpg" alt="Product 1">
-                        <h6>Product Name</h6>
-                        <p>Stock: 100 units</p>
-                        <p>Units Sold: 50</p>
-                        <p>Price: $19.99</p>
-                        <button class="btn btn-danger">Delete</button>
-                        <button class="btn btn-warning">Modify</button>
-                    </div>
-                    <hr class="my-4">
-                    <div class="row">
-                        <img src="product1.jpg" alt="Product 2">
-                        <h6>Product Name</h6>
-                        <p>Stock: 100 units</p>
-                        <p>Units Sold: 50</p>
-                        <p>Price: $19.99</p>
-                        <button class="btn btn-danger">Delete</button>
-                        <button class="btn btn-warning">Modify</button>
-                    </div>
+                    {% for post in posts %}
+                    <form method="post" action="{% url 'deletePost' post.id %}">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <img src="{% static 'img/airpods.jpg' %}" alt="Product 1" class="img-fluid">
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <h4><strong>{{post.title}}</strong></h4>
+                                    <p>Stock: {{post.stock}}</p>
+                                    <p>Units Sold: 50</p>
+                                    <h5><strong>Price: {{post.originalPrice}}</strong></h5>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-center justify-content-end">
+                                <div class="d-flex align-items-center">
+                                    <button type="submit" class="btn btn-danger btn-sm mx-2">Delete</button>
+                                    <button class="btn btn-warning btn-sm mx-2">Modify</button>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <hr class="my-4">
+                    </form>
                 </div>
-                
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

@@ -34,13 +34,9 @@ class Post(models.Model):
   brandId = models.ForeignKey(Brand, on_delete=models.CASCADE)
   stock = models.IntegerField(default=0)
   sellerId = models.ForeignKey(Seller, on_delete=models.CASCADE)
-  discountPercentage = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 
   def __str__(self):
     return self.title
-  
-  def getDiscountedPrice(self):
-    return self.originalPrice * (1 - self.discountPercentage / 100)
   
   def getCategoryName(self):
     return self.categoryId.name

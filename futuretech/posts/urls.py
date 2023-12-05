@@ -14,3 +14,6 @@ urlpatterns += [
   path('profile/sellercentral/modifypost/<int:post_id>/', views.modifyPost, name='modifyPost'),
 ]
 
+urlpatterns += [
+  path('product/<int:post_id>/addtocart', views.addToCart, name='addToCart')
+]

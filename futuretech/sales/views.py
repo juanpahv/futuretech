@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from posts.models import Post, Seller
-from .models import Sale, ProductSold
+from .models import Sale, ProductSold, CartItem
 
 @login_required
 def userOrders(request):
@@ -38,14 +38,14 @@ def sellerOrders(request):
 
 @login_required
 def shoppingCart(request):
-  posts = []
-  posts.append(post)  
-  if request.method == 'POST':
-    post = Post.objects.get(pk=1)
-    posts.append(post)
-  return render(request, 'shoppingCart.html', {'posts': posts})
-  return render(request, 'shoppingCart.html')
+  user = request.user
+  cart_items = CartItem.objects.filter(userId=user)
+  total_quantity = sum(item.quantity for item in cart_items)
+  total_price = sum(item.quantity for item in cart_items)
+  
+  return render(request, 'shoppingCart.html', {'cart_items': cart_items, 'total_quantity': total_quantity, 'total_price': total_price})
 
 @login_required
-def checkout(request):
+def checkout(request, cart_id):
+  productsSold = ProductSold.objects.create(postId=cart_id)
   return render(request, 'successfullOrder.html')

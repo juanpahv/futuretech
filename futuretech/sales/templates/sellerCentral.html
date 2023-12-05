@@ -59,7 +59,9 @@
                             <div class="col-md-3 d-flex align-items-center justify-content-end">
                                 <div class="d-flex align-items-center">
                                     <button type="submit" class="btn btn-danger btn-sm mx-2">Delete</button>
-                                    <button class="btn btn-warning btn-sm mx-2">Modify</button>
+                                    <form method="post" action="{% url 'deletePost' post.id %}">
+                                        <button class="btn btn-warning btn-sm mx-2">Modify</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

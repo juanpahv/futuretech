@@ -4,7 +4,7 @@ from .models import Post, PostImage
 class PostForm(forms.ModelForm):
   class Meta:
     model = Post
-    fields = ['title', 'description', 'condition', 'categoryId', 'originalPrice', 'brandId', 'stock', 'discountPercentage']
+    fields = ['title', 'description', 'condition', 'categoryId', 'originalPrice', 'brandId', 'stock']
     labels = {
       'title': 'Title',
       'description': 'Description',
@@ -13,7 +13,6 @@ class PostForm(forms.ModelForm):
       'originalPrice': 'Original Price',
       'brandId': 'Brand',
       'stock': 'Stock',
-      'discountPercentage': 'Discount Percentage',
     }
     widgets = {
       'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -23,7 +22,6 @@ class PostForm(forms.ModelForm):
       'originalPrice': forms.NumberInput(attrs={'class': 'form-control'}),
       'brandId': forms.Select(attrs={'class': 'form-control'}),
       'stock': forms.NumberInput(attrs={'class': 'form-control'}),
-      'discountPercentage': forms.NumberInput(attrs={'class': 'form-control'}),
     }
 
 class PostImageForm(forms.ModelForm):

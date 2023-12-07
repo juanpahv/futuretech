@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<title>FutureTech</title>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div
+        id="imageCarousel"
+        class="carousel slide mt-4"
+        data-ride="carousel"
+        style="width: 100%"
+      >
+        <div class="carousel-inner">
+          {% for post_image in post.postimage_set.all %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <img
+                src="{{ post_image.image.url }}"
+                class="d-block w-100"
+                alt="{{ post.title }}"
+              />
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-3">{{ post.title }}</h2>
+      <p class="text-muted">Category: {{ post.getCategoryName }}</p>
+      <p class="text-muted">Brand: {{ post.getBrandName }}</p>
+      <p>Condition: <span class="text-success">{{ post.condition }}</span></p>
+      <p>{{ post.description }}</p>
+      <h3 class="text-success font-weight-bold">${{ post.originalPrice }}</h3>
+      <div class="form-group">
+        <form method="post" action="{% url 'addToCart' post_id %}">
+          {% csrf_token %} 
+          <label for="quantity">Quantity:</label>
+          {{ form.quantity }}
+        </div>
+        <button class="btn btn-primary btn-lg">Add to Cart</button>
+        </form>
+        <div class="mt-4">
+          <h4>Stock: {{ post.stock }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'footer.html' %}
+{% endblock%}

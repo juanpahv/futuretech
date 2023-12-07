@@ -1,0 +1,196 @@
+{% extends 'base.html'%} {% block content %} 
+{% load static %} 
+{% include 'navbar.html' %}
+<title>FutureTech</title>
+<section class="section-products">
+  <div class="container">
+    <!-- Phones -->
+    <div class="row justify-content-center text-center section-title">
+      <div class="col-md-8 col-lg-6">
+        <div class="header">
+          <h2><strong>Phones 📱</strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center text-center">
+      {% for phone in phones %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%">
+          {% for post_image in phone.postimage_set.all %}
+          <a href="{% url 'productPage' phone.id %}">
+            <img
+              src="{{ post_image.image.url }}"
+              class="card-img-top zoom-img"
+              alt="{{phone.title}}"
+            />
+          </a>
+          {% endfor %}
+          <div class="card-body">
+            <h6 class="card-title"><strong>{{ phone.title }}</strong></h6>
+            <p class="card-text">Precio: ${{ phone.originalPrice }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Headphones -->
+    <div class="row justify-content-center text-center section-title">
+      <div class="col-md-8 col-lg-6">
+        <div class="header">
+          <h2><strong>Headphones 🎧</strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center text-center">
+      {% for headphone in headphones %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%">
+          {% for post_image in headphone.postimage_set.all %}
+          <a href="{% url 'productPage' headphone.id %}">
+            <img
+              src="{{ post_image.image.url }}"
+              class="card-img-top zoom-img"
+              alt="{{headphone.title}}"
+            />
+          </a>
+          {% endfor %}
+          <div class="card-body">
+            <h6 class="card-title"><strong>{{ headphone.title }}</strong></h6>
+            <p class="card-text">Precio: ${{ headphone.originalPrice }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Game Console -->
+    <div class="row justify-content-center text-center section-title">
+      <div class="col-md-8 col-lg-6">
+        <div class="header">
+          <h2><strong>Game Console 🎮</strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center text-center">
+      {% for gameConsole in gameConsoles %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%">
+          {% for post_image in gameConsole.postimage_set.all %}
+          <a href="{% url 'productPage' gameConsole.id %}">
+            <img
+              src="{{ post_image.image.url }}"
+              class="card-img-top zoom-img"
+              alt="{{gameConsole.title}}"
+            />
+          </a>
+          {% endfor %}
+          <div class="card-body">
+            <h6 class="card-title"><strong>{{ gameConsole.title }}</strong></h6>
+            <p class="card-text">Precio: ${{ gameConsole.originalPrice }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Laptops -->
+    <div class="row justify-content-center text-center section-title">
+      <div class="col-md-8 col-lg-6">
+        <div class="header">
+          <h2><strong>Laptops 💻</strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center text-center">
+      {% for laptop in laptops %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%">
+          {% for post_image in laptop.postimage_set.all %}
+          <a href="{% url 'productPage' laptop.id %}">
+            <img
+              src="{{ post_image.image.url }}"
+              class="card-img-top zoom-img"
+              alt="{{laptop.title}}"
+            />
+          </a>
+          {% endfor %}
+          <div class="card-body">
+            <h6 class="card-title"><strong>{{ laptop.title }}</strong></h6>
+            <p class="card-text">Precio: ${{ laptop.originalPrice }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Peripherals -->
+    <div class="row justify-content-center text-center section-title">
+      <div class="col-md-8 col-lg-6">
+        <div class="header">
+          <h2><strong>Peripherals 🖱</strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center text-center">
+      {% for peripherals in peripherals %}
+      <div class="col-md-3">
+        <div class="card" style="width: 100%">
+          {% for post_image in peripherals.postimage_set.all %}
+          <a href="{% url 'productPage' peripherals.id %}">
+            <img
+              src="{{ post_image.image.url }}"
+              class="card-img-top zoom-img"
+              alt="{{peripherals.title}}"
+            />
+          </a>
+          {% endfor %}
+          <div class="card-body">
+            <h6 class="card-title"><strong>{{ peripherals.title }}</strong></h6>
+            <p class="card-text">Precio: ${{ peripherals.originalPrice }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="row justify-content-center text-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="header">
+          <h2><strong>All Products 🔥</strong></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center text-center">
+        {% for post in posts %}
+        <div class="col-md-3">
+          <div class="card" style="width: 100%">
+            {% for post_image in post.postimage_set.all %}
+            <a href="{% url 'productPage' post.id %}">
+              <img
+                src="{{ post_image.image.url }}"
+                class="card-img-top zoom-img"
+                alt="{{post.title}}"
+              />
+            </a>
+            {% endfor %}
+            <div class="card-body">
+              <h6 class="card-title"><strong>{{ post.title }}</strong></h6>
+              <p class="card-text">Precio: ${{ post.originalPrice }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'footer.html' %} {% endblock %}

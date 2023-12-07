@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<div class="container text-center mx-auto my-5">
+  <h2><strong>Successful Order</strong></h2>
+  <div class="succesfulOrder" style="border: 1px solid #8C8484;">
+      <div class="col-md-4">
+          <img src="{% static 'img/airpods.jpg' %}" class="productOrder" alt="Product Image">
+      </div>
+      <div class="col-md-4">
+          <p class="nameProductOrder"><strong>AirPods (2da generación)</strong></p>
+      </div>
+  </div>
+  <a href="{% url 'home' %}">
+      <button type="button" class="btn btn-primary mt-3">Continue Shopping</button>
+  </a>
+</div>
+{% endblock %}

@@ -1,8 +1,11 @@
+from email.mime import image
+from django.http import HttpRequest
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import PostForm, PostImageForm, QuantityForm
 from .models import Post, Seller, Category
+from sales.models import ProductSold, Sale
 
 def navBar(request):
   user = request.user
@@ -35,24 +38,24 @@ def listPosts(request):
 
 def productPage(request, post_id):
   post = get_object_or_404(Post, pk=post_id)
-  addToCart(request, post_id)
-  return render(request, 'productPage.html', {'post': post})
-
+  form = QuantityForm()
+  return render(request, 'productPage.html', {'post': post, 'form': form})
+  
 @login_required
 def modifyPost(request, post_id):
   if request.method == 'GET':
     try:
-      sellerId = Seller.objects.get(userId=request.user)
-      post = get_object_or_404(Post, pk=post_id, sellerId=sellerId)
+      seller = Seller.objects.get(userId=request.user)
+      post = get_object_or_404(Post, pk=post_id, sellerId=seller)
       form = PostForm(instance=post)
     except ValueError:
       return redirect('sellerCentral')
     return render(request, 'modifyPost.html', {'post': post, 'form': form})
   else:
     try:
-      sellerId = Seller.objects.get(userId=request.user)
-      post = get_object_or_404(Post, pk=post_id, sellerId=sellerId)
-      form = PostForm(request.POST, instance=post)
+      seller = Seller.objects.get(userId=request.user)
+      post = get_object_or_404(Post, pk=post_id, sellerId=seller)
+      form = PostForm(instance=post)
       form.save()
       return redirect('sellerCentral')
     except ValueError:
@@ -61,31 +64,36 @@ def modifyPost(request, post_id):
 @login_required
 def createPost(request):
     if request.method == 'GET':
-        return render(request, 'createPost.html', {'form': PostForm})
+        return render(request, 'createPost.html', {'form': PostForm, 'imageForm': PostImageForm})
     else:
+        imageForm = PostImageForm(request.POST, request.FILES)
         form = PostForm(request.POST)
-        
         if form.is_valid():
             seller = Seller.objects.get(userId=request.user)
             new_post = form.save(commit=False)
             new_post.sellerId = seller
             new_post.save()
+            image = imageForm.save(commit=False)
+            image.postId = new_post
+            image.save()
             return redirect('sellerCentral')
         else:
-            return render(request, 'sellerCentral.html', {'form': form})
+            return render(request, 'createPost.html', {'form': form, 'imageForm': imageForm, 'error': 'Bad data passed in. Try again.'})
         
 @login_required
-def addToCart(request, post_id):
-  post = get_object_or_404(Post, id=post_id)
-
-  cart = request.session.get('cart', [])
-
-  cart.append(
-     {'post_id': post.id,
-      'quantity': 1}
-  )
-
-  request.session['cart'] = cart
-  
-  print(request.session['cart'])
-  return redirect('shoppingCart')
+def buyNow(request, post_id):
+  if request.method == 'GET':
+    post = get_object_or_404(Post, pk=post_id)
+    form = QuantityForm()
+    return render(request, 'productPage.html', {'post': post, 'form': form})
+  else:
+    form = QuantityForm(request.POST)
+    post = get_object_or_404(Post, pk=post_id)
+    if form.is_valid():
+      quantity = form.cleaned_data['quantity']
+      sale = Sale.objects.create(userId=request.user)
+      ProductSold.objects.create(postId=post, saleId=sale, pricePerunit=post.originalPrice, amount=quantity)
+      post.stock -= quantity
+      return redirect('home')
+    else:
+      return render(request, 'productPage.html', {'post': post, 'form': form, 'error': 'Bad data passed in. Try again.'})

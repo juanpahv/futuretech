@@ -10,10 +10,10 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-	path('profile/sellercentral/createpost/', views.createPost, name='createPost'),
-  path('profile/sellercentral/modifypost/<int:post_id>/', views.modifyPost, name='modifyPost'),
+	path('sellerprofile/sellercentral/createpost/', views.createPost, name='createPost'),
+  path('sellerprofile/sellercentral/modifypost/<int:post_id>/', views.modifyPost, name='modifyPost'),
 ]
 
 urlpatterns += [
-  path('product/<int:post_id>/addtocart', views.addToCart, name='addToCart')
+  path('product/<int:post_id>/buynow', views.buyNow, name='buyNow')
 ]

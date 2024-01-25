@@ -27,8 +27,10 @@ class PostForm(forms.ModelForm):
 class PostImageForm(forms.ModelForm):
   class Meta:
     model = PostImage
-    fields = ['image', 'postId']
+    fields = ['postId','image']
+    exclude = ['postId']
+    image = forms.ImageField(help_text='Upload an image', widget=forms.FileInput(attrs={'class': 'form-control'}))
 
 class QuantityForm(forms.Form):
-  quantity = forms.IntegerField(label='Quantity', min_value=1, max_value=1000, widget=forms.NumberInput(attrs={'class': 'form-control'}))
+  quantity = forms.IntegerField(label='quantity' ,min_value=1, max_value=100, widget=forms.NumberInput(attrs={'class': 'form-control'}))
     

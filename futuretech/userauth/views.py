@@ -82,15 +82,13 @@ def userProfile(request):
 @login_required
 def sellerProfile(request):
   user = request.user
-  is_seller = Seller.objects.filter(userId=user).exists()
-  seller_info = get_object_or_404(Seller, userId=user)
-  return render(request, 'sellerProfile.html', {'user': user, 'seller': is_seller,'seller_info':seller_info})
+  seller = get_object_or_404(Seller, userId=user)
+  return render(request, 'sellerProfile.html', {'user': user, 'seller':seller})
 
+@login_required
 def sellerCentral(request):
   return render(request, 'sellerCentral.html')
 
+@login_required
 def sellerOrders(request):
   return render(request, 'sellerOrders.html')
-
-
-

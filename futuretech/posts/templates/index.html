@@ -28,7 +28,8 @@
           {% endfor %}
           <div class="card-body">
             <h6 class="card-title"><strong>{{ phone.title }}</strong></h6>
-            <p class="card-text">Precio: ${{ phone.originalPrice }}</p>
+            <p class="card-text">Price: ${{ phone.originalPrice }}</p>
+            <p class="card-text">Stock: {{ phone.stock }}</p>
           </div>
         </div>
       </div>
@@ -59,7 +60,8 @@
           {% endfor %}
           <div class="card-body">
             <h6 class="card-title"><strong>{{ headphone.title }}</strong></h6>
-            <p class="card-text">Precio: ${{ headphone.originalPrice }}</p>
+            <p class="card-text">Price: ${{ headphone.originalPrice }}</p>
+            <p class="card-text">Stock: {{ headphone.stock }}</p>
           </div>
         </div>
       </div>
@@ -90,7 +92,8 @@
           {% endfor %}
           <div class="card-body">
             <h6 class="card-title"><strong>{{ gameConsole.title }}</strong></h6>
-            <p class="card-text">Precio: ${{ gameConsole.originalPrice }}</p>
+            <p class="card-text">Price: ${{ gameConsole.originalPrice }}</p>
+            <p class="card-text">Stock: {{ gameConsole.stock }}</p>
           </div>
         </div>
       </div>
@@ -122,6 +125,7 @@
           <div class="card-body">
             <h6 class="card-title"><strong>{{ laptop.title }}</strong></h6>
             <p class="card-text">Precio: ${{ laptop.originalPrice }}</p>
+            <p class="card-text">Stock: {{ laptop.stock }}</p>
           </div>
         </div>
       </div>
@@ -153,6 +157,7 @@
           <div class="card-body">
             <h6 class="card-title"><strong>{{ peripherals.title }}</strong></h6>
             <p class="card-text">Precio: ${{ peripherals.originalPrice }}</p>
+            <p class="card-text">Stock: {{ peripherals.stock }}</p>
           </div>
         </div>
       </div>

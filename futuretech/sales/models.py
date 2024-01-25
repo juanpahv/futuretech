@@ -18,3 +18,6 @@ class ProductSold(models.Model):
   def __str__(self):
     return self.postId.title + '- by ' + self.saleId.userId.username
   
+  def get_total_price(self):
+    return self.pricePerunit * self.amount
+  

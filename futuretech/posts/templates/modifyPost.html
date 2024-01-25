@@ -1,76 +1,87 @@
-{% extends "base.html" %} {% block content %}
-{% load static %}
-{% include 'navbar.html' %}
-
+{% extends "base.html" %} {% block content %} {% load static %} {% include 'navbar.html' %}
 <title>Modify post</title>
 <div class="container mt-4">
-    <h2>Modify post</h2>
-    <div>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-text">Name of the Post</h5>
-                            <h4 class="card-title">{{form.title}}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="">
-                        <label for="">Condition</label>
-                        {{form.condition}}
-                    </div>
-                </div>
+  <h2>Modify post</h2>
+  <div>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-text">Name of the Post</h5>
+              <h4 class="card-title">{{form.title}}</h4>
             </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-text">Description</h5>
-                            <p class="card-text">{{ form.description }}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="">
-                            <label for="">Category</label>
-                            {{ form.categoryId }}
-                        </div>
-                        <div class="">
-                            <label for="">Brand</label>
-                            {{form.brandId}}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-text">Images</h5>
-                                <div class="d-flex flex-wrap">
-                                    <img src="https://via.placeholder.com/150" class="img-thumbnail m-2" alt="Image 1">
-                                    <img src="https://via.placeholder.com/150" class="img-thumbnail m-2" alt="Image 2">
-                                    <img src="https://via.placeholder.com/150" class="img-thumbnail m-2" alt="Image 3">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="">
-                            <label for="">stock</label>
-                            {{ form.stock }}
-                        </div>
-                        <div class="">
-                            <label for="">Original price</label>
-                            {{ form.originalPrice }}
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary col-md-2">Modify</button>
-            </form>
+          </div>
         </div>
-    {% endblock %}
-    </div>
-</div>   
+        <div class="col-md-4">
+          <div class="">
+            <label for="">Condition</label>
+            {{form.condition}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-text">Description</h5>
+              <h4 class="card-text">{{ form.description }}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="">
+            <label for="">Category</label>
+            {{ form.categoryId }}
+          </div>
+          <div class="">
+            <label for="">Brand</label>
+            {{form.brandId}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-text">Images</h5>
+              <div class="d-flex flex-wrap">
+                <img
+                  src="https://via.placeholder.com/150"
+                  class="img-thumbnail m-2"
+                  alt="Image 1"
+                />
+                <img
+                  src="https://via.placeholder.com/150"
+                  class="img-thumbnail m-2"
+                  alt="Image 2"
+                />
+                <img
+                  src="https://via.placeholder.com/150"
+                  class="img-thumbnail m-2"
+                  alt="Image 3"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="">
+            <label for="">stock</label>
+            {{ form.stock }}
+          </div>
+          <div class="">
+            <label for="">Original price</label>
+            {{ form.originalPrice }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary col-md-2">Modify</button>
+        <button class="btn btn-danger col-md-2"><a href="{% url 'sellerCentral' %}"></a>Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

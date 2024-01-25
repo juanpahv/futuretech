@@ -35,25 +35,3 @@ def sellerOrders(request):
   products = ProductSold.objects.filter(saleId__in=sales)
   posts = Post.objects.filter(id__in=products)
   return render(request, 'sellerOrders.html', {'posts' : posts})
-
-@login_required
-def shoppingCart(request):
-  cart = request.session.get('cart', [])
-  cart_items = []
-  total_quantity = 0
-  total_price = 0
-
-  for item in cart:
-    post = get_object_or_404(Post, id=item['post_id'])
-    quantity = item['quantity']
-    total_quantity += quantity
-    total_price += quantity
-
-    cart_items.append({'post': post, 'quantity': quantity})
-
-  return render(request, 'view_cart.html', {'cart_items': cart_items, 'total_quantity': total_quantity, 'total_price': total_price})
-
-@login_required
-def checkout(request, cart_id):
-  productsSold = ProductSold.objects.create(postId=cart_id)
-  return render(request, 'successfullOrder.html')

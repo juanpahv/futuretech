@@ -33,12 +33,13 @@
       <p>{{ post.description }}</p>
       <h3 class="text-success font-weight-bold">${{ post.originalPrice }}</h3>
       <div class="form-group">
-        <form method="post" action="{% url 'addToCart' post_id %}">
+        <form method="post" action="{% url 'buyNow' post.id %}">
           {% csrf_token %} 
           <label for="quantity">Quantity:</label>
           {{ form.quantity }}
         </div>
-        <button class="btn btn-primary btn-lg">Add to Cart</button>
+        <button class="btn btn-primary btn-lg">Buy now</button>
+        {{ form.error }}
         </form>
         <div class="mt-4">
           <h4>Stock: {{ post.stock }}</h4>
